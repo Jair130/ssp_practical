@@ -1,4 +1,5 @@
 const   http = require('http'), //HTTP server
+path = require('path'),
         express = require('express'), //Handling HTTP requests & routing
         fs = require('fs'), //File system functionalities
         xmlParse = require('xslt-processor').xmlParse, //XML handling
@@ -6,6 +7,7 @@ const   http = require('http'), //HTTP server
         router = express(), //Init our router
         server = http.createServer(router); //Init our server
 
+        router.use(express.static(path.resolve(__dirname,'views')));
 router.get('/', function(req, res) {
 
     res.writeHead(200, {'Content-Type' : 'text/html'});
